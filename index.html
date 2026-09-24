@@ -1607,6 +1607,34 @@ importFile.onchange=async()=>{
 let timerDuration=60;
 let timerRemaining=60;
 let timerInterval=null;
+let timerAudioContext=null;
+
+function playTimerSound(){
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(!AC) return;
+    if(!timerAudioContext) timerAudioContext = new AC();
+    if(timerAudioContext.state === "suspended") timerAudioContext.resume();
+
+    const now = timerAudioContext.currentTime;
+    const osc = timerAudioContext.createOscillator();
+    const gain = timerAudioContext.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(660, now);
+    osc.frequency.linearRampToValueAtTime(880, now + 0.16);
+
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(0.22, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.44);
+
+    osc.connect(gain);
+    gain.connect(timerAudioContext.destination);
+    osc.start(now);
+    osc.stop(now + 0.45);
+  }catch(e){}
+}
+
 function formatTimer(seconds){
   const mm=String(Math.floor(seconds/60)).padStart(2,'0');
   const ss=String(seconds%60).padStart(2,'0');
@@ -1632,6 +1660,13 @@ function resetTimer(){
 }
 function startTimer(){
   if(timerInterval)return;
+  try{
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if(AC){
+      if(!timerAudioContext) timerAudioContext = new AC();
+      if(timerAudioContext.state === "suspended") timerAudioContext.resume();
+    }
+  }catch(e){}
   if(timerRemaining<=0)timerRemaining=timerDuration;
   timerInterval=setInterval(()=>{
     timerRemaining--;
@@ -1639,6 +1674,7 @@ function startTimer(){
       timerRemaining=0;
       clearInterval(timerInterval);
       timerInterval=null;
+      playTimerSound();
       if(navigator.vibrate) navigator.vibrate([180,80,180]);
     }
     renderTimer();
