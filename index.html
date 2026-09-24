@@ -7,13 +7,13 @@
 <title>Gym Tracker</title>
 <style>
   :root{
-    --bg:#0b0d12;
-    --panel:#131720;
-    --panel-2:#171b25;
-    --panel-3:#1d2330;
-    --text:#f5f7fb;
-    --muted:#8f98aa;
-    --line:rgba(255,255,255,.07);
+    --bg:#f4f6f8;
+    --panel:#ffffff;
+    --panel-2:#f8fafc;
+    --panel-3:#eef2f6;
+    --text:#172033;
+    --muted:#687386;
+    --line:rgba(20,35,55,.10);
     --accent:#7c5cff;
     --accent-2:#34d8ff;
     --success:#38d996;
@@ -65,7 +65,7 @@
     width:42px;
     height:42px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,.045);
+    background:rgba(20,35,55,.045);
     color:var(--text);
     border-radius:14px;
     display:grid;
@@ -81,7 +81,7 @@
     position:relative;
     overflow:hidden;
     background:
-      linear-gradient(145deg, rgba(124,92,255,.30), rgba(52,216,255,.10) 60%, rgba(255,255,255,.035));
+      linear-gradient(145deg, rgba(124,92,255,.30), rgba(52,216,255,.10) 60%, rgba(20,35,55,.035));
     border:1px solid rgba(255,255,255,.08);
     border-radius:28px;
     padding:18px;
@@ -128,7 +128,7 @@
     gap:7px;
     padding:8px 11px;
     border-radius:999px;
-    background:rgba(11,13,18,.28);
+    background:rgba(20,35,55,.06);
     border:1px solid rgba(255,255,255,.08);
     font-size:11px;
     font-weight:800;
@@ -142,7 +142,7 @@
     margin-bottom:12px;
   }
   .stat{
-    background:rgba(255,255,255,.045);
+    background:rgba(20,35,55,.045);
     border:1px solid var(--line);
     border-radius:18px;
     padding:14px;
@@ -195,7 +195,7 @@
     height:10px;
     justify-self:center;
     border-radius:50%;
-    background:#303744;
+    background:#dfe5ec;
     box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
   }
   .four-week-dot.done{
@@ -219,9 +219,9 @@
     place-items:center;
     font-size:11px;
     font-weight:900;
-    color:#fff;
+    color:#ffffff;
     border:1px solid rgba(255,255,255,.10);
-    background:rgba(255,255,255,.035);
+    background:rgba(20,35,55,.035);
   }
   .four-week-check.ok{
     background:linear-gradient(135deg,var(--success),#1eaa72);
@@ -259,7 +259,7 @@
     width:36px;
     height:36px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,.045);
+    background:rgba(20,35,55,.045);
     color:var(--text);
     border-radius:12px;
     cursor:pointer;
@@ -290,7 +290,7 @@
   }
   .day.today{
     background:rgba(124,92,255,.18);
-    color:#fff;
+    color:#ffffff;
   }
   .day.done{color:#f7f8ff}
   .day.done::before{
@@ -337,7 +337,7 @@
     font-weight:900;
   }
   .primary{
-    color:#fff;
+    color:#ffffff;
     background:linear-gradient(135deg,var(--accent),#5f46f2);
     box-shadow:0 10px 25px rgba(124,92,255,.24);
   }
@@ -370,7 +370,7 @@
   .bar{
     height:9px;
     border-radius:999px;
-    background:#222734;
+    background:#e7ebf0;
     overflow:hidden;
   }
   .bar > span{
@@ -424,7 +424,7 @@
     justify-content:center;
     gap:7px;
     padding:7px;
-    background:rgba(18,21,29,.78);
+    background:rgba(255,255,255,.92);
     border:1px solid rgba(255,255,255,.08);
     border-radius:19px;
     backdrop-filter:blur(18px);
@@ -443,7 +443,7 @@
   }
   .dock button.primary-dock{
     background:rgba(124,92,255,.18);
-    color:#fff;
+    color:#ffffff;
   }
 
   /* Modal */
@@ -451,7 +451,7 @@
     position:fixed;
     inset:0;
     z-index:50;
-    background:rgba(3,5,9,.68);
+    background:rgba(20,28,40,.38);
     display:none;
     align-items:flex-end;
     justify-content:center;
@@ -463,7 +463,7 @@
     width:min(760px,100%);
     max-height:92vh;
     overflow:auto;
-    background:#11151d;
+    background:#ffffff;
     border:1px solid var(--line);
     border-radius:27px 27px 0 0;
     padding:18px 16px 22px;
@@ -484,7 +484,7 @@
   }
   .close{
     border:1px solid var(--line);
-    background:rgba(255,255,255,.05);
+    background:#f5f7fa;
     color:var(--text);
     width:38px;
     height:38px;
@@ -504,7 +504,7 @@
   .toggle-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
   .choice{
     border:1px solid var(--line);
-    background:rgba(255,255,255,.035);
+    background:rgba(20,35,55,.035);
     color:#dfe4ee;
     padding:12px;
     border-radius:13px;
@@ -515,7 +515,7 @@
   .choice.active{
     background:linear-gradient(135deg,rgba(124,92,255,.32),rgba(52,216,255,.12));
     border-color:rgba(124,92,255,.48);
-    color:#fff;
+    color:#ffffff;
   }
   .group-chip{
     display:inline-flex;
@@ -527,14 +527,14 @@
     font-weight:800;
   }
   .muscle-sections{display:grid;gap:12px}
-  .muscle-section{border:1px solid var(--line);background:rgba(255,255,255,.022);border-radius:17px;padding:11px}
+  .muscle-section{border:1px solid var(--line);background:rgba(20,35,55,.022);border-radius:17px;padding:11px}
   .muscle-section-head{display:flex;align-items:center;gap:8px;margin-bottom:9px}
   .muscle-section-icon{font-size:18px}
   .muscle-section-title{font-size:12px;font-weight:900}
   .exercise-buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
   .exercise-btn{
     border:1px solid var(--line);
-    background:rgba(255,255,255,.035);
+    background:rgba(20,35,55,.035);
     color:#dfe4ee;
     border-radius:12px;
     padding:10px 8px;
@@ -546,7 +546,7 @@
   .exercise-btn.active{
     background:linear-gradient(135deg,rgba(124,92,255,.34),rgba(52,216,255,.10));
     border-color:rgba(124,92,255,.52);
-    color:#fff;
+    color:#ffffff;
   }
   .config-panel{
     margin-top:10px;
@@ -558,7 +558,7 @@
   .option-btn{
     min-width:42px;
     border:1px solid var(--line);
-    background:rgba(255,255,255,.035);
+    background:rgba(20,35,55,.035);
     color:#dfe4ee;
     border-radius:11px;
     padding:9px 10px;
@@ -576,7 +576,7 @@
   .exercise-summary{margin-top:10px;display:grid;gap:6px}
   .selected-exercise-card{
     display:flex;align-items:center;justify-content:space-between;gap:8px;
-    background:rgba(255,255,255,.035);border:1px solid var(--line);
+    background:rgba(20,35,55,.035);border:1px solid var(--line);
     border-radius:12px;padding:9px 10px;
   }
   .selected-exercise-name{font-size:11px;font-weight:900}
@@ -604,7 +604,7 @@
   .set-input,.muscle-select,.exercise-preset{
     width:100%;
     border:1px solid var(--line);
-    background:#0e1218;
+    background:#f7f9fb;
     color:#eef2f7;
     border-radius:11px;
     padding:9px 10px;
@@ -684,7 +684,7 @@
     cursor:pointer;
     font-size:11px;
     font-weight:900;
-    color:#fff;
+    color:#ffffff;
     background:linear-gradient(135deg,var(--accent),#6047ec);
     box-shadow:0 9px 22px rgba(124,92,255,.22);
   }
@@ -750,8 +750,8 @@
   .four-week-cell.active{background:linear-gradient(135deg,var(--success),#24b87e);color:#fff}
   .four-week-cell.today{box-shadow:inset 0 0 0 2px #fff,0 0 0 2px rgba(124,92,255,.7)}
   .four-week-cell:active{transform:scale(.96)}
-  .four-week-check{width:30px;height:43px;border-radius:11px;display:grid;place-items:center;font-size:17px;font-weight:900;color:#697384;background:rgba(255,255,255,.035)}
-  .four-week-check.ok{color:#fff;background:linear-gradient(135deg,var(--success),#1eaa72);box-shadow:0 0 9px rgba(56,217,150,.2)}
+  .four-week-check{width:30px;height:43px;border-radius:11px;display:grid;place-items:center;font-size:17px;font-weight:900;color:#697384;background:rgba(20,35,55,.035)}
+  .four-week-check.ok{color:#ffffff;background:linear-gradient(135deg,var(--success),#1eaa72);box-shadow:0 0 9px rgba(56,217,150,.2)}
   .four-week-footer{display:grid;grid-template-columns:1fr 1.55fr;gap:7px;margin-top:10px}
   .today-panel{border:0;border-radius:13px;background:rgba(255,255,255,.055);color:var(--text);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:9px;cursor:pointer}
   .today-panel strong{font-size:11px}.today-panel span{font-size:9px;color:var(--muted);margin-top:2px}
@@ -762,6 +762,30 @@
     .four-week-cell{font-size:10px}.four-week-check{font-size:15px}
   }
 
+
+  .consistency-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+  .month-legend-wrap{display:flex;gap:8px;flex-wrap:wrap}
+  .month-legend{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:9px;font-size:10px;font-weight:900;text-transform:capitalize;color:#334155}
+  .month-legend i{width:9px;height:9px;border-radius:3px;display:block}
+  .month-legend.month-a{background:#edf4fb}.month-legend.month-a i{background:#dcebf8}
+  .month-legend.month-b{background:#fff5e7}.month-legend.month-b i{background:#f6e4c7}
+  .weekday-row{display:grid;grid-template-columns:repeat(7,1fr) 28px;gap:6px;margin:0 0 5px}
+  .weekday-row div{text-align:center;font-size:9px;color:#6b7280;font-weight:900}
+  .four-week-row{display:grid;grid-template-columns:1fr 28px;gap:6px;padding:4px 0;border:0}
+  .four-week-dots{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+  .calendar-day{
+    min-width:0;height:45px;border:0;border-radius:10px;
+    color:#263247;font-size:11px;font-weight:800;cursor:pointer;
+    transition:transform .12s,box-shadow .12s,background .12s;
+  }
+  .calendar-day.month-a{background:#edf4fb}
+  .calendar-day.month-b{background:#fff5e7}
+  .calendar-day.done{background:var(--success);color:#fff}
+  .calendar-day.today{box-shadow:inset 0 0 0 2px var(--accent)}
+  .calendar-day:active{transform:scale(.96)}
+  .four-week-check{width:28px;height:28px;align-self:center;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:900}
+  .four-week-check.ok{background:var(--success);color:#fff}
+  .four-week-check.no{background:#edf0f4}
 </style>
 </head>
 <body>
@@ -787,13 +811,6 @@
   <div id="selectedDayDetails" class="day-details"></div>
 </div>
 <button id="dataBtn" style="display:none" aria-hidden="true"></button>
-
-<div class="dock">
-  <button onclick="document.getElementById('todayBtn').click()">Hoy</button>
-  <button class="primary-dock" onclick="document.getElementById('quickBtn').click()">＋ Entrenar</button>
-  <button onclick="document.getElementById('dataBtn').click()">Datos</button>
-</div>
-
 <div class="modal-backdrop" id="modal">
   <div class="sheet">
     <div class="sheet-head">
@@ -1180,31 +1197,85 @@ function getFourWeekWeeks(anchor){
 }
 let fourWeekOffset=0;
 function renderFourWeekProgress(){
-  const box=document.getElementById("fourWeekProgress"); if(!box)return;
-  const today=new Date(); today.setHours(0,0,0,0);
-  const anchor=getFourWeekAnchor(); anchor.setDate(anchor.getDate()+fourWeekOffset*28);
-  const weeks=getFourWeekWeeks(anchor);
-  const monthsPresent=[];
-  weeks.flatMap(w=>w.days).forEach(day=>{const m=day.date.getMonth(); if(!monthsPresent.includes(m))monthsPresent.push(m);});
-  document.getElementById("monthLegend").innerHTML=monthsPresent.map(m=>`<span class="month-chip ${monthChipClass(m)}">${monthShort(m)}</span>`).join("");
-  document.getElementById("todayLabel").textContent=today.toLocaleDateString("es-AR",{day:"numeric",month:"short",year:"numeric"});
-  box.innerHTML=weeks.map(week=>{
-    const cells=week.days.map(day=>{
-      const tone=monthTone(day.date);
-      return `<button class="four-week-cell ${day.done?'active':'inactive'} ${tone} ${day.today?'today':''}" data-date="${day.key}" aria-label="${day.date.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'})}">${day.date.getDate()}</button>`;
-    }).join("");
-    const check=week.trained>=2?`<span class="four-week-check ok">✓</span>`:`<span class="four-week-check">—</span>`;
-    return `<div class="four-week-row">${cells}${check}</div>`;
-  }).join("");
-  box.querySelectorAll(".four-week-cell").forEach(btn=>{
+  const box=document.getElementById("fourWeekProgress");
+  if(!box) return;
+
+  const weeks=getLastFourWeeks();
+  const monthNames=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+  const monthClasses=["month-a","month-b"];
+
+  const monthsSeen=[];
+  weeks.flatMap(w=>w.days).forEach(day=>{
+    const id=`${day.date.getFullYear()}-${day.date.getMonth()}`;
+    if(!monthsSeen.some(x=>x.id===id)){
+      monthsSeen.push({id, label:monthNames[day.date.getMonth()], month:day.date.getMonth()});
+    }
+  });
+
+  const legend=monthsSeen.map((m,i)=>
+    `<span class="month-legend ${monthClasses[i%2]}"><i></i>${m.label}</span>`
+  ).join("");
+
+  let out=`<div class="consistency-head">
+    <div class="month-legend-wrap">${legend}</div>
+    <div class="week-nav">
+      <button class="nav-btn" id="prevMonth" aria-label="Semana anterior">‹</button>
+      <button class="nav-btn" id="nextMonth" aria-label="Semana siguiente">›</button>
+    </div>
+  </div>
+  <div class="weekday-row">
+    ${["L","M","X","J","V","S","D"].map(x=>`<div>${x}</div>`).join("")}
+    <div></div>
+  </div>`;
+
+  weeks.forEach(week=>{
+    const check=week.trained>=2
+      ? `<span class="four-week-check ok">✓</span>`
+      : `<span class="four-week-check no"></span>`;
+
+    out+=`<div class="four-week-row">
+      <div class="four-week-dots">`;
+
+    week.days.forEach((day)=>{
+      const monthClass=(day.date.getMonth()%2===0)?"month-a":"month-b";
+      out+=`<button class="calendar-day ${monthClass} ${day.done?'done':''} ${day.today?'today':''}"
+        data-day-key="${day.key}" title="${day.date.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"long"})}">
+        ${day.date.getDate()}
+      </button>`;
+    });
+
+    out+=`</div>${check}</div>`;
+  });
+
+  box.innerHTML=out;
+
+  box.querySelectorAll(".calendar-day").forEach(btn=>{
     btn.onclick=()=>{
-      const k=btn.dataset.date;
-      if(records[k]) delete records[k]; else records[k]={done:true,exercises:[]};
-      save(); selectedKey=k; renderFourWeekProgress(); renderSelectedDayDetails();
+      const k=btn.dataset.dayKey;
+      if(records[k]){
+        delete records[k];
+      }else{
+        records[k]={done:true,exercises:[]};
+      }
+      save();
+      renderFourWeekProgress();
+      renderSelectedDayDetails();
     };
   });
-}
 
+  document.getElementById("prevMonth").onclick=()=>{
+    const monday=startOfWeek(new Date());
+    monday.setDate(monday.getDate()-7);
+    viewDate=monday;
+    renderFourWeekProgress();
+  };
+  document.getElementById("nextMonth").onclick=()=>{
+    const monday=startOfWeek(new Date());
+    monday.setDate(monday.getDate()+7);
+    viewDate=monday;
+    renderFourWeekProgress();
+  };
+}
 function renderSelectedDayDetails(){
   const box=document.getElementById("selectedDayDetails");
   if(!selectedKey || !records[selectedKey]){
@@ -1232,8 +1303,7 @@ function render(){
 
 document.getElementById("prevFourWeeks").onclick=()=>{fourWeekOffset--;render();};
 document.getElementById("nextFourWeeks").onclick=()=>{fourWeekOffset++;render();};
-document.getElementById("todayBtn").onclick=()=>{fourWeekOffset=0;render();};
-document.getElementById("quickBtn").onclick=()=>openModal(keyFromDate(new Date()));
+
 document.getElementById("closeBtn").onclick=closeModal;
 document.getElementById("doneBtn").onclick=closeModal;
 document.getElementById("deleteBtn").onclick=()=>{
