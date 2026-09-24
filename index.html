@@ -1041,6 +1041,33 @@
     .month-chip{font-size:8.5px !important;padding:4px 7px !important}
   }
 
+
+  /* ===== Timer ===== */
+  .timer-card{
+    margin-top:9px;
+    background:#fff;
+    border:1px solid #e0e5ec;
+    border-radius:14px;
+    box-shadow:0 6px 18px rgba(20,35,55,.06);
+    padding:10px;
+  }
+  .timer-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .timer-title{font-size:11px;font-weight:900;color:#172033}
+  .timer-value{font-variant-numeric:tabular-nums;font-size:28px;line-height:1;font-weight:900;letter-spacing:-.04em;color:#172033;text-align:center;margin:8px 0 9px}
+  .timer-presets{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+  .timer-preset,.timer-action{
+    height:34px;border:1px solid #dfe5ec;border-radius:9px;background:#f7f9fb;color:#344054;font-size:10px;font-weight:900;cursor:pointer
+  }
+  .timer-preset.active{background:#eaf1ff;border-color:#2463eb;color:#2463eb}
+  .timer-actions{display:grid;grid-template-columns:1.2fr 1fr;gap:5px;margin-top:6px}
+  .timer-start{background:#2463eb;color:#fff;border-color:#2463eb}
+  .timer-action:disabled{opacity:.45;cursor:default}
+  @media(max-width:420px){
+    .timer-card{padding:9px}
+    .timer-value{font-size:26px;margin:7px 0 8px}
+    .timer-preset,.timer-action{height:32px;font-size:9.5px}
+  }
+
 </style>
 </head>
 <body>
@@ -1061,6 +1088,23 @@
     <div class="four-week-footer">
       <button class="today-panel" id="todayBtn"><strong>Hoy</strong><span id="todayLabel">24 sep 2026</span></button>
       <button class="primary" id="quickBtn">＋ Registrar hoy</button>
+    </div>
+  </div>
+
+  <div class="timer-card">
+    <div class="timer-head">
+      <div class="timer-title">Timer</div>
+      <button class="timer-action" id="timerResetTop" type="button">Reiniciar</button>
+    </div>
+    <div class="timer-value" id="timerValue">01:00</div>
+    <div class="timer-presets">
+      <button class="timer-preset" data-seconds="30" type="button">30 s</button>
+      <button class="timer-preset" data-seconds="45" type="button">45 s</button>
+      <button class="timer-preset active" data-seconds="60" type="button">60 s</button>
+    </div>
+    <div class="timer-actions">
+      <button class="timer-action timer-start" id="timerStart" type="button">Iniciar</button>
+      <button class="timer-action" id="timerPause" type="button" disabled>Pausar</button>
     </div>
   </div>
 
@@ -1557,6 +1601,64 @@ importFile.onchange=async()=>{
   }
   importFile.value="";
 };
+
+
+// Timer de cuenta regresiva. No modifica ni guarda los datos de entrenamiento.
+let timerDuration=60;
+let timerRemaining=60;
+let timerInterval=null;
+function formatTimer(seconds){
+  const mm=String(Math.floor(seconds/60)).padStart(2,'0');
+  const ss=String(seconds%60).padStart(2,'0');
+  return `${mm}:${ss}`;
+}
+function renderTimer(){
+  const el=document.getElementById('timerValue');
+  if(el) el.textContent=formatTimer(timerRemaining);
+  document.querySelectorAll('.timer-preset').forEach(b=>b.classList.toggle('active',Number(b.dataset.seconds)===timerDuration));
+  const start=document.getElementById('timerStart');
+  const pause=document.getElementById('timerPause');
+  if(start){ start.textContent='Iniciar'; start.disabled=!!timerInterval; }
+  if(pause){ pause.disabled=!timerInterval; pause.textContent='Pausar'; }
+}
+function stopTimer(){
+  if(timerInterval){clearInterval(timerInterval);timerInterval=null;}
+  renderTimer();
+}
+function resetTimer(){
+  stopTimer();
+  timerRemaining=timerDuration;
+  renderTimer();
+}
+function startTimer(){
+  if(timerInterval)return;
+  if(timerRemaining<=0)timerRemaining=timerDuration;
+  timerInterval=setInterval(()=>{
+    timerRemaining--;
+    if(timerRemaining<=0){
+      timerRemaining=0;
+      clearInterval(timerInterval);
+      timerInterval=null;
+      if(navigator.vibrate) navigator.vibrate([180,80,180]);
+    }
+    renderTimer();
+  },1000);
+  renderTimer();
+}
+document.querySelectorAll('.timer-preset').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    timerDuration=Number(btn.dataset.seconds);
+    timerRemaining=timerDuration;
+    stopTimer();
+    renderTimer();
+  });
+});
+document.getElementById('timerStart')?.addEventListener('click',()=>{
+  if(timerInterval) stopTimer(); else startTimer();
+});
+document.getElementById('timerPause')?.addEventListener('click',stopTimer);
+document.getElementById('timerResetTop')?.addEventListener('click',resetTimer);
+renderTimer();
 
 render();
 </script>
