@@ -156,80 +156,80 @@
     border-radius:var(--radius);
     box-shadow:0 12px 38px rgba(0,0,0,.16);
     backdrop-filter:blur(16px);
-    padding:15px;
+    padding:12px;
     margin-bottom:12px;
   }
-  .four-week-title{
-    font-size:13px;
-    font-weight:900;
-    letter-spacing:-.02em;
+  .four-week-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin-bottom:10px;
   }
-  .four-week-sub{
-    color:var(--muted);
-    font-size:9px;
-    margin-top:4px;
-    margin-bottom:12px;
+  .month-legend{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .month-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 9px;border-radius:9px;
+    font-size:10px;font-weight:900;
+    border:1px solid rgba(255,255,255,.06);
+  }
+  .month-chip::before{content:"";width:8px;height:8px;border-radius:3px;background:currentColor;opacity:.28}
+  .month-chip.sep{background:rgba(93,153,214,.14);color:#7fb5e8}
+  .month-chip.oct{background:rgba(224,174,92,.14);color:#e2b66d}
+  .month-chip.nov{background:rgba(151,111,210,.14);color:#b99be8}
+  .four-week-nav{display:flex;gap:6px}
+  .four-week-nav .nav-btn{width:30px;height:30px;border-radius:10px}
+  .four-week-weekdays{
+    display:grid;grid-template-columns:34px repeat(7,minmax(0,1fr)) 28px;
+    gap:5px;align-items:center;
+    margin-bottom:4px;
+  }
+  .four-week-weekdays span{
+    text-align:center;font-size:9px;color:var(--muted);font-weight:900;
   }
   .four-week-row{
     display:grid;
-    grid-template-columns:42px 1fr 24px;
-    align-items:center;
-    gap:7px;
-    padding:7px 0;
-    border-bottom:1px solid var(--line);
+    grid-template-columns:34px repeat(7,minmax(0,1fr)) 28px;
+    align-items:stretch;
+    gap:5px;
+    margin-bottom:5px;
   }
-  .four-week-row:last-child{border-bottom:0}
-  .four-week-label{
-    font-size:10px;
-    color:#cbd1dc;
-    font-weight:900;
+  .four-week-month{
+    display:flex;align-items:center;justify-content:center;
+    border-radius:10px;
+    font-size:8px;font-weight:900;
+    text-transform:uppercase;
+    color:#d9deea;
   }
-  .four-week-dots{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:7px;
-    align-items:center;
+  .four-week-month.sep,.four-week-cell.sep{background:rgba(93,153,214,.12)}
+  .four-week-month.oct,.four-week-cell.oct{background:rgba(224,174,92,.13)}
+  .four-week-month.nov,.four-week-cell.nov{background:rgba(151,111,210,.13)}
+  .four-week-cell{
+    min-width:0;height:42px;border-radius:10px;
+    display:grid;place-items:center;
+    font-size:11px;font-weight:800;color:#aeb7c8;
+    position:relative;
   }
-  .four-week-dot{
-    width:10px;
-    height:10px;
-    justify-self:center;
-    border-radius:50%;
-    background:#303744;
-    box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
-  }
-  .four-week-dot.done{
-    background:linear-gradient(180deg,var(--accent-2),var(--accent));
-    box-shadow:0 0 8px rgba(124,92,255,.35);
-  }
-  .four-week-dot.today{
-    width:13px;
-    height:13px;
-    background:transparent;
-    box-shadow:inset 0 0 0 2px #fff, 0 0 0 2px rgba(124,92,255,.65);
-  }
-  .four-week-dot.today.done{
-    background:linear-gradient(180deg,var(--accent-2),var(--accent));
-  }
-  .four-week-check{
-    width:19px;
-    height:19px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    font-size:11px;
-    font-weight:900;
+  .four-week-cell.outside{opacity:.42}
+  .four-week-cell.done{
+    background:linear-gradient(145deg,var(--success),#1eaa72);
     color:#fff;
-    border:1px solid rgba(255,255,255,.10);
+  }
+  .four-week-cell.today{box-shadow:inset 0 0 0 2px #fff,0 0 0 2px rgba(124,92,255,.75)}
+  .four-week-check{
+    height:42px;border-radius:10px;display:grid;place-items:center;
+    font-size:14px;font-weight:900;color:#687284;
     background:rgba(255,255,255,.035);
   }
   .four-week-check.ok{
-    background:linear-gradient(135deg,var(--success),#1eaa72);
-    border-color:transparent;
-    box-shadow:0 0 10px rgba(56,217,150,.25);
+    color:#fff;background:linear-gradient(135deg,var(--success),#1eaa72);
   }
-  .four-week-check.no{
-    color:#687284;
+  @media (max-width:420px){
+    .four-week-card{padding:10px}
+    .four-week-weekdays,.four-week-row{grid-template-columns:28px repeat(7,minmax(0,1fr)) 25px;gap:4px}
+    .four-week-cell,.four-week-check{height:38px}
+    .four-week-cell{font-size:10px}
+    .four-week-month{font-size:7px}
   }
 
   .card,.progress-wrap,.year-list{
@@ -732,8 +732,16 @@
   </div>
 
   <div class="four-week-card">
-    <div class="four-week-title">Progreso últimas 4 semanas</div>
-    <div class="four-week-sub">Cada punto representa un día · ✓ si hubo 2 o más días entrenados</div>
+    <div class="four-week-head">
+      <div class="month-legend" id="monthLegend"></div>
+      <div class="four-week-nav">
+        <button class="nav-btn" id="fourWeekPrev" aria-label="4 semanas anteriores">‹</button>
+        <button class="nav-btn" id="fourWeekNext" aria-label="4 semanas siguientes">›</button>
+      </div>
+    </div>
+    <div class="four-week-weekdays">
+      <span></span><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span><span></span>
+    </div>
     <div id="fourWeekProgress"></div>
   </div>
 
@@ -1130,32 +1138,52 @@ function getLastFourWeeks(){
   return weeks;
 }
 
+function monthClass(month){
+  return ["sep","oct","nov","dic","ene","feb","mar","abr","may","jun","jul","ago"][month];
+}
+function monthShort(month){
+  return ["Sep","Oct","Nov","Dic","Ene","Feb","Mar","Abr","May","Jun","Jul","Ago"][month];
+}
+let fourWeekOffset=0;
+function getFourWeekAnchor(){
+  const today=new Date(); today.setHours(0,0,0,0);
+  const monday=startOfWeek(today);
+  monday.setDate(monday.getDate() + fourWeekOffset*28);
+  return monday;
+}
 function renderFourWeekProgress(){
   const box=document.getElementById("fourWeekProgress");
+  const legend=document.getElementById("monthLegend");
   if(!box) return;
 
-  const weeks=getLastFourWeeks();
+  const anchor=getFourWeekAnchor();
+  const weeks=[];
+  const monthSet=[];
+  for(let w=0;w<4;w++){
+    const monday=new Date(anchor); monday.setDate(monday.getDate()+w*7);
+    const days=[]; let trained=0;
+    for(let i=0;i<7;i++){
+      const d=new Date(monday); d.setDate(d.getDate()+i);
+      const done=!!records[keyFromDate(d)];
+      if(done) trained++;
+      const mc=monthClass(d.getMonth());
+      if(!monthSet.includes(mc)) monthSet.push(mc);
+      days.push({date:d,done,today:sameDay(d,new Date()),monthClass:mc});
+    }
+    weeks.push({days,trained});
+  }
 
-  box.innerHTML=weeks.map((week,index)=>{
-    const label=`Sem ${index+1}`;
-    const dots=week.days.map(day=>`
-      <span
-        class="four-week-dot ${day.done?'done':''} ${day.today?'today':''}"
-        title="${day.date.toLocaleDateString("es-AR",{weekday:"long",day:"numeric",month:"short"})}">
-      </span>
-    `).join("");
+  if(legend){
+    legend.innerHTML=monthSet.map(mc=>`<span class="month-chip ${mc}">${monthShort(["sep","oct","nov","dic","ene","feb","mar","abr","may","jun","jul","ago"].indexOf(mc))}</span>`).join("");
+  }
 
-    const check=week.trained>=2
-      ? `<span class="four-week-check ok">✓</span>`
-      : `<span class="four-week-check no">—</span>`;
-
-    return `
-      <div class="four-week-row">
-        <div class="four-week-label">${label}</div>
-        <div class="four-week-dots">${dots}</div>
-        ${check}
-      </div>
-    `;
+  box.innerHTML=weeks.map(week=>{
+    const monthNames=week.days.map(d=>monthShort(d.date.getMonth()));
+    const unique=monthNames.filter((v,i,a)=>a.indexOf(v)===i);
+    const monthLabel=unique.length===1?unique[0]:unique.join("/");
+    const cells=week.days.map(day=>`<div class="four-week-cell ${day.monthClass} ${day.done?'done':''} ${day.today?'today':''}" title="${day.date.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'})}">${day.date.getDate()}</div>`).join("");
+    const check=week.trained>=2?`<div class="four-week-check ok">✓</div>`:`<div class="four-week-check">—</div>`;
+    return `<div class="four-week-row"><div class="four-week-month ${week.days[0].monthClass}">${monthLabel}</div>${cells}${check}</div>`;
   }).join("");
 }
 
@@ -1220,6 +1248,9 @@ function render(){
     });
   }
 }
+
+document.getElementById("fourWeekPrev").onclick=()=>{fourWeekOffset--;renderFourWeekProgress();};
+document.getElementById("fourWeekNext").onclick=()=>{fourWeekOffset++;renderFourWeekProgress();};
 
 document.getElementById("prevMonth").onclick=()=>{viewDate.setMonth(viewDate.getMonth()-1);selectedKey=null;render();};
 document.getElementById("nextMonth").onclick=()=>{viewDate.setMonth(viewDate.getMonth()+1);selectedKey=null;render();};
